@@ -63,6 +63,11 @@ export function useForm({
     );
   };
 
+  const checkForm = () => {
+    // setValues(initialFValues);
+    setErrors({});
+  };
+
   const resetForm = () => {
     setValues(initialFValues);
     setErrors({});
@@ -75,5 +80,6 @@ export function useForm({
     setErrors,
     handleInputChange,
     resetForm,
+    checkForm,
   };
 }

@@ -143,8 +143,15 @@ const SectionForm: FC<Props> = () => {
       return Object.values(temp).every((x) => x === "");
   };
 
-  const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
-    useForm({ initialFValues, validateOnChange: true, validate });
+  const {
+    values,
+    setValues,
+    errors,
+    setErrors,
+    handleInputChange,
+    resetForm,
+    checkForm,
+  } = useForm({ initialFValues, validateOnChange: true, validate });
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -154,21 +161,11 @@ const SectionForm: FC<Props> = () => {
   //   }
   // };
   useEffect(() => {
-    // e.preventDefault();
-    if (arvot.validation) {
+    if (arvot.validation === "check") {
+      console.log("Check");
       if (validate()) {
-        // employeeService.insertEmployee(values);
-        resetForm();
+        checkForm();
       }
-
-      dispatch(
-        addInput({
-          validation: false,
-        })
-      );
-    }
-    if (arvot.validation === "empty") {
-      resetForm();
     }
   }, [arvot]);
 

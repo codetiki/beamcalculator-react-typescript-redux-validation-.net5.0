@@ -21,4 +21,4 @@ Alkunäkymä:
 ![Kuva](./react-app/src/images/layout_start.png)
 Huom! Jos käynnistys ei onnistu, varmista ensin onko localhost-portit oikein.
 
-Copyright © Timo Kivelä
+Copyright © Timo Kivelä 2023

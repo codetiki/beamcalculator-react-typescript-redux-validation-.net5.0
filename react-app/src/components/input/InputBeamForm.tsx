@@ -58,11 +58,17 @@ export default function InputBeamForm() {
       temp.span = fieldValues.span > 0 ? "" : "Luku pitää olla > 0.";
     if ("a" in fieldValues)
       temp.a =
-        fieldValues.a > -1 && fieldValues.a.length != 0
+        parseFloat(fieldValues.a) >= 0 &&
+        parseFloat(fieldValues.a) < parseFloat(fieldValues.span)
           ? ""
-          : "Luku pitää olla >= 0.";
+          : "Luku pitää olla 0 <= B < span";
     if ("b" in fieldValues)
-      temp.b = fieldValues.b > 0 ? "" : "Luku pitää olla > 0.";
+      temp.b =
+        parseFloat(fieldValues.b) > 0 &&
+        parseFloat(fieldValues.b) > parseFloat(fieldValues.a) &&
+        parseFloat(fieldValues.b) <= parseFloat(fieldValues.span)
+          ? ""
+          : "Luku pitää olla B > 0 ja A < B <= span";
 
     setErrors({
       ...temp,
@@ -71,8 +77,15 @@ export default function InputBeamForm() {
     if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
 
-  const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
-    useForm({ initialFValues, validateOnChange: true, validate });
+  const {
+    values,
+    setValues,
+    errors,
+    setErrors,
+    handleInputChange,
+    resetForm,
+    checkForm,
+  } = useForm({ initialFValues, validateOnChange: true, validate });
 
   const dispatch = useDispatch();
   const arvot = useSelector((state: any) => state.input.input);
@@ -105,19 +118,11 @@ export default function InputBeamForm() {
   }, [arvot]);
 
   useEffect(() => {
-    if (arvot.validation) {
+    if (arvot.validation === "check") {
+      console.log("Check");
       if (validate()) {
-        resetForm();
+        checkForm();
       }
-
-      dispatch(
-        addInput({
-          validation: false,
-        })
-      );
-    }
-    if (arvot.validation === "empty") {
-      resetForm();
     }
   }, [arvot]);
 

@@ -29,11 +29,7 @@ const ButtonBeamForm: FC<ButtonProps> = () => {
   };
 
   const handleValidateInputs = () => {
-    dispatch(addInput({ validation: true }));
-  };
-
-  const handleRemoveErrors = () => {
-    dispatch(addInput({ validation: "empty" }));
+    dispatch(addInput({ validation: "check" }));
   };
 
   return (
@@ -49,9 +45,6 @@ const ButtonBeamForm: FC<ButtonProps> = () => {
               </Button>
               <Button variant="contained" onClick={handleValidateInputs}>
                 {t("buttonbeamform:check")}
-              </Button>
-              <Button variant="contained" onClick={handleRemoveErrors}>
-                {t("buttonbeamform:removeErrors")}
               </Button>
             </Stack>
           </Item>

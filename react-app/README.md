@@ -16,9 +16,8 @@ Syötä palkin pituus ja tukien sijainnit.
 Kuormien syötössä valitse ensin kuormatyyppi (forceType) alasvetovalikosta ja anna kuormituksen arvot. Syötetyt arvot näkyvät oikeassa laidassa.
 Ylalaidan napit:
 
-- Tyhjennä lähtötiedot (tyhjentää kaikki lähtötietokentät)
-- Tarkista validointi (tarkistaa syöttökentät palkin pituuksien, tukien ja poikkileikkauksen syötön osalta)
-- Poista virhe-viestit (voidaan erikseen poistaa validoinnissa syntyneet virheviestit)
+- Tyhjennä lähtötiedot (Tyhjentää kaikki lähtötietokentät.)
+- Tarkista validointi (Tarkistaa syöttökentät palkin pituuksien, tukien ja poikkileikkauksen syötön osalta. Syöttökentän alalaitaan ilmestyy virheilmoitus, jos kenttään syötetty vääränmuotoinen arvo.)
 
 Kun olet syöttänyt kaikki lähtötiedot, mene Tulokset-välilehdelle.
 ![Kuva](./src/images/layout_tulokset_ennen_laskentaa.png)
@@ -38,7 +37,7 @@ Tallennetut tulokset saat näkyviin painamalla Tulokset-välilehden Tallennetut 
 - material-ui
 - react-bootstrap
 - redux (tilan hallinta ja keskittäminen)
-- react-i18next (sivujen käännökset)
+- react-i18next (sivujen käännökset: Suomi/English )
 - axios (http pyynnöt tietokantaan)
 
 ## Vinkkejä
@@ -54,4 +53,4 @@ Vertailulaskelmat muilla laskenohjelmilla löytyvät Example- ja Comparison Resu
 - Syötteiden päivitys (tallennetun laskennan muuttaminen)
 - PDF-tulosten laskennasta
 
-Copyright © Timo Kivelä
+Copyright © Timo Kivelä 2023

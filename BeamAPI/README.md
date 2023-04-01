@@ -58,4 +58,4 @@ Beams- ja Types-taulut on (one to many kytköksellä) yhdistetty. Eli yhdellä p
 Beams-taulu sisältää palkin dimensiot (pituus ja tuet) ja laskennan tuloksena saadut leikkausvoima- ja taivutusmomentien maksimiarvot.
 Types-tauluun tulostuu syötetyt kuormitukset.
 
-Copyright © Timo Kivelä
+Copyright © Timo Kivelä 2023
