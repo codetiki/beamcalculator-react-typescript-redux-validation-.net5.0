@@ -18,7 +18,7 @@ Alkunäkymä:
 ![Kuva](./BeamAPI/Images/layout_swagger.PNG)
 Sen jälkeen avaa react-app-kansio Visual Studio Code:ssa ja kirjoita terminaalissa `npm start`. Käynnistyksen onnistuessa käynnistyy localhost-porttiin.
 Alkunäkymä:
-![Kuva](./react-app/src/images/layout_start.png)
+![Kuva](./react-app/src/images/layout_lähtö.png)
 Huom! Jos käynnistys ei onnistu, varmista ensin onko localhost-portit oikein.
 
 Copyright © Timo Kivelä 2023
