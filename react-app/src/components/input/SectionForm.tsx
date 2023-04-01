@@ -45,7 +45,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const SectionForm: FC<Props> = () => {
-  const { t } = useTranslation(["sectionform"]);
+  const { t } = useTranslation(["sectionform", "validation"]);
   const dispatch = useDispatch();
   const arvot = useSelector((state: any) => state.input.input);
   const [width, setWidth] = useState("");
@@ -110,6 +110,8 @@ const SectionForm: FC<Props> = () => {
       setWidth("");
       setHeight("");
 
+      setValues(initialFValues);
+
       dispatch(
         addValue({
           materialNumber: 0,
@@ -132,9 +134,9 @@ const SectionForm: FC<Props> = () => {
   const validate = (fieldValues = values): any => {
     let temp = { ...errors };
     if ("width" in fieldValues)
-      temp.width = fieldValues.width > 0 ? "" : "Luku pitää olla > 0.";
+      temp.width = fieldValues.width > 0 ? "" : t("validation:width");
     if ("height" in fieldValues)
-      temp.height = fieldValues.height > 0 ? "" : "Luku pitää olla > 0.";
+      temp.height = fieldValues.height > 0 ? "" : t("validation:height");
     setErrors({
       ...temp,
     });

@@ -49,26 +49,26 @@ const initialFValues: InputBeamFormValues = {
 };
 
 export default function InputBeamForm() {
-  const { t } = useTranslation(["inputbeamform"]);
+  const { t } = useTranslation(["inputbeamform", "validation"]);
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("beamName" in fieldValues)
-      temp.beamName = fieldValues.beamName ? "" : "Palkin nimi vaaditaan.";
+      temp.beamName = fieldValues.beamName ? "" : t("validation:beamName");
     if ("span" in fieldValues)
-      temp.span = fieldValues.span > 0 ? "" : "Luku pitää olla > 0.";
+      temp.span = fieldValues.span > 0 ? "" : t("validation:span");
     if ("a" in fieldValues)
       temp.a =
         parseFloat(fieldValues.a) >= 0 &&
         parseFloat(fieldValues.a) < parseFloat(fieldValues.span)
           ? ""
-          : "Luku pitää olla 0 <= B < span";
+          : t("validation:a");
     if ("b" in fieldValues)
       temp.b =
         parseFloat(fieldValues.b) > 0 &&
         parseFloat(fieldValues.b) > parseFloat(fieldValues.a) &&
         parseFloat(fieldValues.b) <= parseFloat(fieldValues.span)
           ? ""
-          : "Luku pitää olla B > 0 ja A < B <= span";
+          : t("validation:b");
 
     setErrors({
       ...temp,
