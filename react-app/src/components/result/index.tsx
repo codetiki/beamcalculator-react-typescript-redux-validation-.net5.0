@@ -19,8 +19,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Result() {
   const { t } = useTranslation(["result"]);
-  const values = useSelector((state) => state.values.values);
-  const results = useSelector((state) => state.results.results);
+  const values = useSelector((state: any) => state.values.values);
+  const results = useSelector((state: any) => state.results.results);
 
   return (
     <>

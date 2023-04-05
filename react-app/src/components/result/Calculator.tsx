@@ -74,27 +74,29 @@ const Calculator: FC = () => {
 
   // Alustetaan viivadiagrammit
   const [shearData, setShearData] = useState<any>({
-    labels: [],
-    datasets: [
-      {
-        label: t("result:xAxel"),
-        data: [],
-        borderColor: "black",
-        borderWidth: 3,
-        tension: 0.1,
-        pointRadius: 0,
-      },
-      {
-        label: "V [kN]",
-        data: [],
-        backgroundColor: "#97ff97",
-        borderColor: "green",
-        borderWidth: 1,
-        fill: true,
-        tension: 0.1,
-        pointRadius: 0,
-      },
-    ],
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: t("result:xAxel"),
+          data: [],
+          borderColor: "black",
+          borderWidth: 3,
+          tension: 0.1,
+          pointRadius: 0,
+        },
+        {
+          label: "V [kN]",
+          data: [],
+          backgroundColor: "#97ff97",
+          borderColor: "green",
+          borderWidth: 1,
+          fill: true,
+          tension: 0.1,
+          pointRadius: 0,
+        },
+      ],
+    },
     options: {
       plugins: {
         title: {
@@ -102,41 +104,43 @@ const Calculator: FC = () => {
           text: t("result:shearForceDiagram"),
         },
       },
-      maintainAspectRatio: true,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: false,
-            },
-          },
-        ],
-      },
+      // maintainAspectRatio: true,
+      // scales: {
+      //   yAxes: [
+      //     {
+      //       ticks: {
+      //         beginAtZero: false,
+      //       },
+      //     },
+      //   ],
+      // },
     },
   });
 
   const [momentData, setMomentData] = useState<any>({
-    labels: [],
-    datasets: [
-      {
-        label: t("result:xAxel"),
-        data: [],
-        borderColor: "black",
-        borderWidth: 3,
-        tension: 0.1,
-        pointRadius: 0,
-      },
-      {
-        label: "M [kNm]",
-        data: [],
-        backgroundColor: "#ffe5e5",
-        borderColor: "red",
-        borderWidth: 1,
-        fill: true,
-        tension: 0.1,
-        pointRadius: 0,
-      },
-    ],
+    dat: {
+      labels: [],
+      datasets: [
+        {
+          label: t("result:xAxel"),
+          data: [],
+          borderColor: "black",
+          borderWidth: 3,
+          tension: 0.1,
+          pointRadius: 0,
+        },
+        {
+          label: "M [kNm]",
+          data: [],
+          backgroundColor: "#ffe5e5",
+          borderColor: "red",
+          borderWidth: 1,
+          fill: true,
+          tension: 0.1,
+          pointRadius: 0,
+        },
+      ],
+    },
     options: {
       plugins: {
         title: {
@@ -144,16 +148,16 @@ const Calculator: FC = () => {
           text: t("result:bendingMomentDiagram"),
         },
       },
-      maintainAspectRatio: true,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: false,
-            },
-          },
-        ],
-      },
+      // maintainAspectRatio: true,
+      // scales: {
+      //   yAxes: [
+      //     {
+      //       ticks: {
+      //         beginAtZero: false,
+      //       },
+      //     },
+      //   ],
+      // },
     },
   });
 
@@ -648,6 +652,97 @@ const Calculator: FC = () => {
     // asetaan shearData/momentData-stateen koko viivadiagrammin tarvitsemat data-asetukset
     dispatch(
       addShearData({
+        data: {
+          labels: X,
+          datasets: [
+            {
+              label: t("result:xAxel"),
+              data: XAxis,
+              borderColor: "black",
+              borderWidth: 3,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+            {
+              label: "V [kN]",
+              data: newShearforce,
+              backgroundColor: "#97ff97",
+              borderColor: "green",
+              borderWidth: 1,
+              fill: true,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: t("result:shearForceDiagram"),
+            },
+          },
+          // maintainAspectRatio: true,
+          // scales: {
+          //   yAxes: [
+          //     {
+          //       ticks: {
+          //         beginAtZero: false,
+          //       },
+          //     },
+          //   ],
+          // },
+        },
+      })
+    );
+
+    dispatch(
+      addMomentData({
+        data: {
+          labels: X,
+          datasets: [
+            {
+              label: t("result:xAxel"),
+              data: XAxis,
+              borderColor: "black",
+              borderWidth: 3,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+            {
+              label: "M [kNm]",
+              data: newMoment,
+              backgroundColor: "#ffe5e5",
+              borderColor: "red",
+              borderWidth: 1,
+              fill: true,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: t("result:bendingMomentDiagram"),
+            },
+          },
+          // maintainAspectRatio: true,
+          // scales: {
+          //   yAxes: [
+          //     {
+          //       ticks: {
+          //         beginAtZero: false,
+          //       },
+          //     },
+          //   ],
+          // },
+        },
+      })
+    );
+    setShearData({
+      data: {
         labels: X,
         datasets: [
           {
@@ -669,29 +764,28 @@ const Calculator: FC = () => {
             pointRadius: 0,
           },
         ],
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: t("result:shearForceDiagram"),
-            },
-          },
-          maintainAspectRatio: true,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: false,
-                },
-              },
-            ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: t("result:shearForceDiagram"),
           },
         },
-      })
-    );
-
-    dispatch(
-      addMomentData({
+        // maintainAspectRatio: true,
+        // scales: {
+        //   yAxes: [
+        //     {
+        //       ticks: {
+        //         beginAtZero: false,
+        //       },
+        //     },
+        //   ],
+        // },
+      },
+    });
+    setMomentData({
+      data: {
         labels: X,
         datasets: [
           {
@@ -713,89 +807,7 @@ const Calculator: FC = () => {
             pointRadius: 0,
           },
         ],
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: t("result:bendingMomentDiagram"),
-            },
-          },
-          maintainAspectRatio: true,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: false,
-                },
-              },
-            ],
-          },
-        },
-      })
-    );
-    setShearData({
-      labels: X,
-      datasets: [
-        {
-          label: t("result:xAxel"),
-          data: XAxis,
-          borderColor: "black",
-          borderWidth: 3,
-          tension: 0.1,
-          pointRadius: 0,
-        },
-        {
-          label: "V [kN]",
-          data: newShearforce,
-          backgroundColor: "#97ff97",
-          borderColor: "green",
-          borderWidth: 1,
-          fill: true,
-          tension: 0.1,
-          pointRadius: 0,
-        },
-      ],
-      options: {
-        plugins: {
-          title: {
-            display: true,
-            text: t("result:shearForceDiagram"),
-          },
-        },
-        maintainAspectRatio: true,
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: false,
-              },
-            },
-          ],
-        },
       },
-    });
-    setMomentData({
-      labels: X,
-      datasets: [
-        {
-          label: t("result:xAxel"),
-          data: XAxis,
-          borderColor: "black",
-          borderWidth: 3,
-          tension: 0.1,
-          pointRadius: 0,
-        },
-        {
-          label: "M [kNm]",
-          data: newMoment,
-          backgroundColor: "#ffe5e5",
-          borderColor: "red",
-          borderWidth: 1,
-          fill: true,
-          tension: 0.1,
-          pointRadius: 0,
-        },
-      ],
       options: {
         plugins: {
           title: {
@@ -803,16 +815,16 @@ const Calculator: FC = () => {
             text: t("result:bendingMomentDiagram"),
           },
         },
-        maintainAspectRatio: true,
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: false,
-              },
-            },
-          ],
-        },
+        // maintainAspectRatio: true,
+        // scales: {
+        //   yAxes: [
+        //     {
+        //       ticks: {
+        //         beginAtZero: false,
+        //       },
+        //     },
+        //   ],
+        // },
       },
     });
 
@@ -1005,27 +1017,29 @@ const Calculator: FC = () => {
 
     dispatch(
       addDeflectionData({
-        labels: X,
-        datasets: [
-          {
-            label: t("result:xAxel"),
-            data: XAxis,
-            borderColor: "black",
-            borderWidth: 3,
-            tension: 0.1,
-            pointRadius: 0,
-          },
-          {
-            label: "D [mm]",
-            data: newDeflection,
-            backgroundColor: "#D5F3FE",
-            borderColor: "blue",
-            borderWidth: 1,
-            fill: true,
-            tension: 0.1,
-            pointRadius: 0,
-          },
-        ],
+        data: {
+          labels: X,
+          datasets: [
+            {
+              label: t("result:xAxel"),
+              data: XAxis,
+              borderColor: "black",
+              borderWidth: 3,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+            {
+              label: "D [mm]",
+              data: newDeflection,
+              backgroundColor: "#D5F3FE",
+              borderColor: "blue",
+              borderWidth: 1,
+              fill: true,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+          ],
+        },
         options: {
           plugins: {
             title: {
@@ -1033,16 +1047,16 @@ const Calculator: FC = () => {
               text: t("result:deflectionDiagram"),
             },
           },
-          maintainAspectRatio: true,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: false,
-                },
-              },
-            ],
-          },
+          // maintainAspectRatio: true,
+          // scales: {
+          //   yAxes: [
+          //     {
+          //       ticks: {
+          //         beginAtZero: false,
+          //       },
+          //     },
+          //   ],
+          // },
         },
       })
     );

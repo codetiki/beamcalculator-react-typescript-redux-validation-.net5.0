@@ -51,6 +51,6 @@ Vertailulaskelmat muilla laskenohjelmilla löytyvät Example- ja Comparison Resu
 ## Lisättäviä asioita
 
 - Syötteiden päivitys (tallennetun laskennan muuttaminen)
-- PDF-tulosten laskennasta
+- PDF-tulostus laskennasta (react-pdf)
 
 Copyright © Timo Kivelä 2023

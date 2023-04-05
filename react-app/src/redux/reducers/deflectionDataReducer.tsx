@@ -1,27 +1,29 @@
 import { ActionTypes } from "../constants/action-types";
 
 const intialState = {
-  labels: [],
-  datasets: [
-    {
-      label: "X-akseli",
-      data: [],
-      borderColor: "black",
-      borderWidth: 3,
-      tension: 0.1,
-      pointRadius: 0,
-    },
-    {
-      label: "S [m]",
-      data: [],
-      backgroundColor: "#D5F3FE",
-      borderColor: "blue",
-      borderWidth: 1,
-      fill: true,
-      tension: 0.1,
-      pointRadius: 0,
-    },
-  ],
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "X-akseli",
+        data: [],
+        borderColor: "black",
+        borderWidth: 3,
+        tension: 0.1,
+        pointRadius: 0,
+      },
+      {
+        label: "S [m]",
+        data: [],
+        backgroundColor: "#D5F3FE",
+        borderColor: "blue",
+        borderWidth: 1,
+        fill: true,
+        tension: 0.1,
+        pointRadius: 0,
+      },
+    ],
+  },
   options: {
     plugins: {
       title: {
@@ -29,16 +31,16 @@ const intialState = {
         text: "Taipuma-käyrä",
       },
     },
-    maintainAspectRatio: true,
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: false,
-          },
-        },
-      ],
-    },
+    // maintainAspectRatio: true,
+    // scales: {
+    //   yAxes: [
+    //     {
+    //       ticks: {
+    //         beginAtZero: false,
+    //       },
+    //     },
+    //   ],
+    // },
   },
 };
 // Tallennetaan kaikki palkit values-tilaan

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, FC } from "react";
 import { Button as ControlButton } from "../../control";
-import { Button as MuiButton } from "@material-ui/core";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Table, Accordion } from "react-bootstrap";
 import { createAPIEndpoint, ENDPOINTS } from "../../api/Index";
@@ -169,11 +168,13 @@ const ResultList: FC<Props> = (props) => {
 
   return (
     <>
-      {/* palkin tallennus tietokantaan */}
-      <ControlButton variant="contained" onClick={handleShow}>
-        <BsList />
-        {t("result:buttonSavesResults")}
-      </ControlButton>
+      <div>
+        {/* palkin esittäminen tietokantasta */}
+        <ControlButton variant="contained" onClick={handleShow}>
+          <BsList />
+          {t("result:buttonSavesResults")}
+        </ControlButton>
+      </div>
 
       <Modal size="xl" show={show} onHide={handleClose}>
         <Modal.Header>
