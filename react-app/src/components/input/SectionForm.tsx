@@ -168,6 +168,13 @@ const SectionForm: FC<Props> = () => {
       if (validate()) {
         checkForm();
       }
+      dispatch(addInput({ validation: "" }));
+    }
+    if (arvot.default) {
+      console.log("reset");
+
+      resetForm();
+      dispatch(addInput({ default: false }));
     }
   }, [arvot]);
 

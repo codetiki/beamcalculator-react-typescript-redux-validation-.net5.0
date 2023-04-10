@@ -50,7 +50,7 @@ const initialFValues: InputBeamFormValues = {
 
 export default function InputBeamForm() {
   const { t } = useTranslation(["inputbeamform", "validation"]);
-  const validate = (fieldValues = values) => {
+  const validate = (fieldValues = values): any => {
     let temp = { ...errors };
     if ("beamName" in fieldValues)
       temp.beamName = fieldValues.beamName ? "" : t("validation:beamName");
@@ -74,7 +74,8 @@ export default function InputBeamForm() {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values)
+      return Object.values(temp).every((x) => x === "");
   };
 
   const {
@@ -118,12 +119,19 @@ export default function InputBeamForm() {
   }, [arvot]);
 
   useEffect(() => {
-    // if (arvot.validation === "check") {
-    console.log("Check");
-    if (validate()) {
-      checkForm();
+    if (arvot.validation === "check") {
+      console.log("Check");
+      if (validate()) {
+        checkForm();
+      }
+      dispatch(addInput({ validation: "" }));
     }
-    // }
+    if (arvot.default) {
+      console.log("reset");
+
+      resetForm();
+      dispatch(addInput({ default: false }));
+    }
   }, [arvot]);
 
   return (
