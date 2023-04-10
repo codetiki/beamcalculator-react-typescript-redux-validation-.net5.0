@@ -59,14 +59,13 @@ export default function InputBeamForm() {
     if ("a" in fieldValues)
       temp.a =
         parseFloat(fieldValues.a) >= 0 &&
-        parseFloat(fieldValues.a) < parseFloat(fieldValues.span)
+        parseFloat(fieldValues.a) < parseFloat(values.span)
           ? ""
           : t("validation:a");
     if ("b" in fieldValues)
       temp.b =
-        parseFloat(fieldValues.b) > 0 &&
-        parseFloat(fieldValues.b) > parseFloat(fieldValues.a) &&
-        parseFloat(fieldValues.b) <= parseFloat(fieldValues.span)
+        parseFloat(fieldValues.b) > parseFloat(values.a) &&
+        parseFloat(fieldValues.b) <= parseFloat(values.span)
           ? ""
           : t("validation:b");
 
