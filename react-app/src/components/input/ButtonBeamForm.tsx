@@ -43,9 +43,9 @@ const ButtonBeamForm: FC<ButtonProps> = () => {
               <Button variant="contained" onClick={handleClearInputs}>
                 {t("buttonbeamform:emptyInput")}
               </Button>
-              <Button variant="contained" onClick={handleValidateInputs}>
+              {/* <Button variant="contained" onClick={handleValidateInputs}>
                 {t("buttonbeamform:check")}
-              </Button>
+              </Button> */}
             </Stack>
           </Item>
         </Grid>

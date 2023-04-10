@@ -118,12 +118,12 @@ export default function InputBeamForm() {
   }, [arvot]);
 
   useEffect(() => {
-    if (arvot.validation === "check") {
-      console.log("Check");
-      if (validate()) {
-        checkForm();
-      }
+    // if (arvot.validation === "check") {
+    console.log("Check");
+    if (validate()) {
+      checkForm();
     }
+    // }
   }, [arvot]);
 
   return (
