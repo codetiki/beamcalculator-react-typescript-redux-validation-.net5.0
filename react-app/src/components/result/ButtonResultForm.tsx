@@ -33,11 +33,11 @@ const ButtonResultForm: FC<ButtonProps> = () => {
   const values = useSelector((state: any) => state.values.values);
   const results = useSelector((state: any) => state.results.results);
   const [notify, setNotify] = useState({ isOpen: false });
-  const [createBeamId, setCreateBeamId] = useState(null); // luodun palkin Id
-  const [updateResult, setUpdateResult] = useState(false);
+  const [createBeamId, setCreateBeamId] = useState<number | null>(null); // luodun palkin Id
+  const [updateResult, setUpdateResult] = useState<boolean>(false);
   // luodaan state-muuttuja, jolla hallinnoidaan Laske tulos-nappia Calculator-tiedostossa
-  const [showResultButton, setShowResultButton] = useState(false);
-  const [typeLkm, setTypeLkm] = useState<number>();
+  const [showResultButton, setShowResultButton] = useState<boolean>(false);
+  const [typeLkm, setTypeLkm] = useState<number>(0);
   // let typeLkm: number = 0; // Kuormakombinaatoiden lkm (1, 2 tai 3)
 
   // Jos lähtötiedot riittävät, voidaan showResultButton asettaa "true"
@@ -139,7 +139,7 @@ const ButtonResultForm: FC<ButtonProps> = () => {
   useEffect(() => {
     if (
       createBeamId !== null &&
-      (typeLkm === 1 || typeLkm === 2 || typeLkm === 3)
+      (typeLkm == 1 || typeLkm == 2 || typeLkm == 3)
     ) {
       const postType1 = {
         xp: values.xp1,
@@ -166,7 +166,7 @@ const ButtonResultForm: FC<ButtonProps> = () => {
         });
     }
 
-    if (createBeamId !== null && (typeLkm === 2 || typeLkm === 3)) {
+    if (createBeamId !== null && (typeLkm == 2 || typeLkm == 3)) {
       const postType2 = {
         xp: values.xp2,
         fy: values.fy2,
@@ -192,7 +192,7 @@ const ButtonResultForm: FC<ButtonProps> = () => {
         });
     }
 
-    if (createBeamId !== null && typeLkm === 3) {
+    if (createBeamId !== null && typeLkm == 3) {
       const postType3 = {
         xp: values.xp3,
         fy: values.fy3,
